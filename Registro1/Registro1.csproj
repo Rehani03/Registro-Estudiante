@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entidades\Estudiante.cs" />
     <Compile Include="Menu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,7 +91,6 @@
   <ItemGroup>
     <Folder Include="BLL\" />
     <Folder Include="DAL\Scripts\" />
-    <Folder Include="Entidades\" />
     <Folder Include="Resources\" />
     <Folder Include="UI\Consultas\" />
     <Folder Include="UI\Registros\" />
