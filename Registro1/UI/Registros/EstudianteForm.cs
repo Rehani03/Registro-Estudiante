@@ -90,7 +90,7 @@ namespace Registro1.UI.Registros
             bool flag = true;
             MyError.Clear();
 
-            if (!string.IsNullOrWhiteSpace(MatriculaMaskedTextBox.Text))
+            if (!MatriculaMaskedTextBox.MaskFull)
             {
                 MyError.SetError(MatriculaMaskedTextBox, "El campo Matrìcula no puede estar vacio.");
                 flag = false;
@@ -108,19 +108,19 @@ namespace Registro1.UI.Registros
                 flag = false;
             }
 
-            if (!string.IsNullOrWhiteSpace(CedulaMaskedTextBox.Text))
+            if (!CedulaMaskedTextBox.MaskFull)
             {
                 MyError.SetError(CedulaMaskedTextBox, "El campo Cédula no puede estar vacio.");
                 flag = false;
             }
 
-            if (!string.IsNullOrWhiteSpace(TelefonoMaskedTextBox.Text))
+            if (!TelefonoMaskedTextBox.MaskFull)
             {
                 MyError.SetError(TelefonoMaskedTextBox, "El campo Teléfono no puede estar vacio.");
                 flag = false;
             }
 
-            if (!string.IsNullOrWhiteSpace(CelularMaskedTextBox.Text))
+            if (!CelularMaskedTextBox.MaskFull)
             {
                 MyError.SetError(CelularMaskedTextBox, "El campo Celular no puede estar vacio.");
                 flag = false;
