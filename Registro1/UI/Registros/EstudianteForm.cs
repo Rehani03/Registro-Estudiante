@@ -31,7 +31,8 @@ namespace Registro1.UI.Registros
             EmailTextBox.Text = string.Empty;
             FechaDateTime.Value = DateTime.Now;
             SexoComboBox.Text = string.Empty;
-            BalanceTextBox.Text = string.Empty;
+            BalanceMaskedTextBox.Text = string.Empty;
+            MyError.Clear();
         }
 
         private Estudiante LlenarClase()
@@ -43,7 +44,7 @@ namespace Registro1.UI.Registros
             estudiante.Apellidos = ApellidosTextBox.Text;
             estudiante.Cedula = CedulaMaskedTextBox.Text;
             estudiante.Telefono = TelefonoMaskedTextBox.Text;
-            estudiante.Celular = CedulaMaskedTextBox.Text;
+            estudiante.Celular = CelularMaskedTextBox.Text;
             estudiante.Email = EmailTextBox.Text;
             estudiante.FechaNacimiento = FechaDateTime.Value;
             if (SexoComboBox.SelectedItem.ToString() == "Femenino")
@@ -51,7 +52,7 @@ namespace Registro1.UI.Registros
             else
                 if (SexoComboBox.SelectedItem.ToString() == "Masculino")
                 estudiante.Sexo = 1;
-            estudiante.Balance = Convert.ToDouble(BalanceTextBox.Text);
+            estudiante.Balance = Convert.ToDouble(BalanceMaskedTextBox.Text);
 
 
             return estudiante;
@@ -69,19 +70,81 @@ namespace Registro1.UI.Registros
             EmailTextBox.Text = estudiante.Email;
             FechaDateTime.Value = estudiante.FechaNacimiento;
             if (estudiante.Sexo == 0)
-                SexoComboBox.Text = "Femenino";
+            {
+                SexoComboBox.SelectedIndex = 0;
+                SexoComboBox.Show();
+
+            }    
             else
                 if (estudiante.Sexo == 1)
-                SexoComboBox.Text = "Masculino";
-            BalanceTextBox.Text = Convert.ToString(estudiante.Balance);
+                {
+                     SexoComboBox.SelectedIndex = 1;
+                     SexoComboBox.Show();
+                }
+                
+            BalanceMaskedTextBox.Text = Convert.ToString(estudiante.Balance);
         }
 
         private bool ValidarCampos()
         {
-            bool flag = false;
+            bool flag = true;
             MyError.Clear();
 
-            
+            if (!string.IsNullOrWhiteSpace(MatriculaMaskedTextBox.Text))
+            {
+                MyError.SetError(MatriculaMaskedTextBox, "El campo Matrìcula no puede estar vacio.");
+                flag = false;
+            }
+
+            if (String.IsNullOrWhiteSpace(NombresTextBox.Text))
+            {
+                MyError.SetError(NombresTextBox, "El campo Nombre no puede estar vacio.");
+                flag = false;
+            }
+
+            if (String.IsNullOrWhiteSpace(ApellidosTextBox.Text))
+            {
+                MyError.SetError(ApellidosTextBox, "El campo Apellidos no puede estar vacio.");
+                flag = false;
+            }
+
+            if (!string.IsNullOrWhiteSpace(CedulaMaskedTextBox.Text))
+            {
+                MyError.SetError(CedulaMaskedTextBox, "El campo Cédula no puede estar vacio.");
+                flag = false;
+            }
+
+            if (!string.IsNullOrWhiteSpace(TelefonoMaskedTextBox.Text))
+            {
+                MyError.SetError(TelefonoMaskedTextBox, "El campo Teléfono no puede estar vacio.");
+                flag = false;
+            }
+
+            if (!string.IsNullOrWhiteSpace(CelularMaskedTextBox.Text))
+            {
+                MyError.SetError(CelularMaskedTextBox, "El campo Celular no puede estar vacio.");
+                flag = false;
+            }
+
+            if (String.IsNullOrWhiteSpace(EmailTextBox.Text))
+            {
+                MyError.SetError(EmailTextBox, "El campo Email no puede estar vacio.");
+                flag = false;
+            }
+
+            if (SexoComboBox.SelectedIndex == -1)
+            {
+                MyError.SetError(SexoComboBox, "El campo Sexo no puede estar vacio.");
+                flag = false;
+            }
+
+
+            if (String.IsNullOrWhiteSpace(BalanceMaskedTextBox.Text))
+            {
+                MyError.SetError(BalanceMaskedTextBox, "El campo Balance no puede estar vacio");
+                flag = false;
+            }
+
             return flag; 
         }
 
@@ -89,6 +152,12 @@ namespace Registro1.UI.Registros
 
         private void GuardarButton_Click(object sender, EventArgs e)
         {
+            //Estudiante estudiante;
+            //bool flag = false;
+
+            if (!ValidarCampos())
+                return;
+           // LimpiarCampos();
 
         }
 
@@ -96,5 +165,7 @@ namespace Registro1.UI.Registros
         {
             LimpiarCampos();
         }
+
+        
     }
 }
