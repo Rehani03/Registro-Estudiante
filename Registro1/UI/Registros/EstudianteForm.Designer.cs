@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EstudianteForm));
             this.IDlabel = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.MatriculaLabel = new System.Windows.Forms.Label();
             this.MatriculaTextBox = new System.Windows.Forms.TextBox();
             this.NombresLabel = new System.Windows.Forms.Label();
@@ -38,7 +39,7 @@
             this.ApellidosLabel = new System.Windows.Forms.Label();
             this.ApellidosTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.CedulaTextBox = new System.Windows.Forms.TextBox();
             this.TelefonoLabel = new System.Windows.Forms.Label();
             this.TelefonoTextBox = new System.Windows.Forms.TextBox();
             this.CelularLabel = new System.Windows.Forms.Label();
@@ -55,7 +56,9 @@
             this.GuardarButton = new System.Windows.Forms.Button();
             this.EliminarButton = new System.Windows.Forms.Button();
             this.BuscarButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.MyError = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MyError)).BeginInit();
             this.SuspendLayout();
             // 
             // IDlabel
@@ -67,13 +70,12 @@
             this.IDlabel.TabIndex = 0;
             this.IDlabel.Text = "ID";
             // 
-            // numericUpDown1
+            // numericUpDown
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(178, 28);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(134, 20);
-            this.numericUpDown1.TabIndex = 1;
-//            this.numericUpDown1.ValueChanged += new System.EventHandler(this.NumericUpDown1_ValueChanged);
+            this.numericUpDown.Location = new System.Drawing.Point(178, 28);
+            this.numericUpDown.Name = "numericUpDown";
+            this.numericUpDown.Size = new System.Drawing.Size(134, 20);
+            this.numericUpDown.TabIndex = 1;
             // 
             // MatriculaLabel
             // 
@@ -122,7 +124,6 @@
             this.ApellidosTextBox.Name = "ApellidosTextBox";
             this.ApellidosTextBox.Size = new System.Drawing.Size(223, 20);
             this.ApellidosTextBox.TabIndex = 2;
-//            this.ApellidosTextBox.TextChanged += new System.EventHandler(this.ApellidosTextBox_TextChanged);
             // 
             // label1
             // 
@@ -132,14 +133,13 @@
             this.label1.Size = new System.Drawing.Size(40, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Cédula";
-            //this.label1.Click += new System.EventHandler(this.Label1_Click);
             // 
-            // textBox1
+            // CedulaTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(178, 181);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(134, 20);
-            this.textBox1.TabIndex = 2;
+            this.CedulaTextBox.Location = new System.Drawing.Point(178, 181);
+            this.CedulaTextBox.Name = "CedulaTextBox";
+            this.CedulaTextBox.Size = new System.Drawing.Size(134, 20);
+            this.CedulaTextBox.TabIndex = 2;
             // 
             // TelefonoLabel
             // 
@@ -149,7 +149,6 @@
             this.TelefonoLabel.Size = new System.Drawing.Size(49, 13);
             this.TelefonoLabel.TabIndex = 0;
             this.TelefonoLabel.Text = "Teléfono";
-            //this.TelefonoLabel.Click += new System.EventHandler(this.Label1_Click);
             // 
             // TelefonoTextBox
             // 
@@ -166,7 +165,6 @@
             this.CelularLabel.Size = new System.Drawing.Size(39, 13);
             this.CelularLabel.TabIndex = 0;
             this.CelularLabel.Text = "Celular";
-           // this.CelularLabel.Click += new System.EventHandler(this.Label1_Click);
             // 
             // CelularTextBox
             // 
@@ -183,7 +181,6 @@
             this.EmailLabel.Size = new System.Drawing.Size(32, 13);
             this.EmailLabel.TabIndex = 0;
             this.EmailLabel.Text = "Email";
-           // this.EmailLabel.Click += new System.EventHandler(this.Label1_Click);
             // 
             // EmailTextBox
             // 
@@ -200,7 +197,6 @@
             this.label2.Size = new System.Drawing.Size(108, 13);
             this.label2.TabIndex = 0;
             this.label2.Text = "Fecha de Nacimiento";
-            //this.label2.Click += new System.EventHandler(this.Label1_Click);
             // 
             // FechaDateTime
             // 
@@ -218,7 +214,6 @@
             this.SexoLabel.Size = new System.Drawing.Size(31, 13);
             this.SexoLabel.TabIndex = 0;
             this.SexoLabel.Text = "Sexo";
-            //this.SexoLabel.Click += new System.EventHandler(this.Label1_Click);
             // 
             // SexoComboBox
             // 
@@ -239,7 +234,6 @@
             this.BalanceLabel.Size = new System.Drawing.Size(46, 13);
             this.BalanceLabel.TabIndex = 0;
             this.BalanceLabel.Text = "Balance";
-            //this.BalanceLabel.Click += new System.EventHandler(this.Label1_Click);
             // 
             // BalanceTextBox
             // 
@@ -298,6 +292,10 @@
             this.BuscarButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BuscarButton.UseVisualStyleBackColor = true;
             // 
+            // MyError
+            // 
+            this.MyError.ContainerControl = this;
+            // 
             // EstudianteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -313,11 +311,11 @@
             this.Controls.Add(this.BalanceTextBox);
             this.Controls.Add(this.CelularTextBox);
             this.Controls.Add(this.TelefonoTextBox);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.CedulaTextBox);
             this.Controls.Add(this.ApellidosTextBox);
             this.Controls.Add(this.NombresTextBox);
             this.Controls.Add(this.MatriculaTextBox);
-            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.numericUpDown);
             this.Controls.Add(this.BalanceLabel);
             this.Controls.Add(this.SexoLabel);
             this.Controls.Add(this.label2);
@@ -332,8 +330,8 @@
             this.MaximizeBox = false;
             this.Name = "EstudianteForm";
             this.Text = "Registro de Estudiante";
-//            this.Load += new System.EventHandler(this.EstudianteForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MyError)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -342,7 +340,7 @@
         #endregion
 
         private System.Windows.Forms.Label IDlabel;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown numericUpDown;
         private System.Windows.Forms.Label MatriculaLabel;
         private System.Windows.Forms.TextBox MatriculaTextBox;
         private System.Windows.Forms.Label NombresLabel;
@@ -350,7 +348,7 @@
         private System.Windows.Forms.Label ApellidosLabel;
         private System.Windows.Forms.TextBox ApellidosTextBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox CedulaTextBox;
         private System.Windows.Forms.Label TelefonoLabel;
         private System.Windows.Forms.TextBox TelefonoTextBox;
         private System.Windows.Forms.Label CelularLabel;
@@ -367,5 +365,6 @@
         private System.Windows.Forms.Button GuardarButton;
         private System.Windows.Forms.Button EliminarButton;
         private System.Windows.Forms.Button BuscarButton;
+        private System.Windows.Forms.ErrorProvider MyError;
     }
 }
