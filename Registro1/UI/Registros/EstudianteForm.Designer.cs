@@ -33,17 +33,13 @@
             this.IDlabel = new System.Windows.Forms.Label();
             this.numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.MatriculaLabel = new System.Windows.Forms.Label();
-            this.MatriculaTextBox = new System.Windows.Forms.TextBox();
             this.NombresLabel = new System.Windows.Forms.Label();
             this.NombresTextBox = new System.Windows.Forms.TextBox();
             this.ApellidosLabel = new System.Windows.Forms.Label();
             this.ApellidosTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.CedulaTextBox = new System.Windows.Forms.TextBox();
             this.TelefonoLabel = new System.Windows.Forms.Label();
-            this.TelefonoTextBox = new System.Windows.Forms.TextBox();
             this.CelularLabel = new System.Windows.Forms.Label();
-            this.CelularTextBox = new System.Windows.Forms.TextBox();
             this.EmailLabel = new System.Windows.Forms.Label();
             this.EmailTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -51,12 +47,16 @@
             this.SexoLabel = new System.Windows.Forms.Label();
             this.SexoComboBox = new System.Windows.Forms.ComboBox();
             this.BalanceLabel = new System.Windows.Forms.Label();
-            this.BalanceTextBox = new System.Windows.Forms.TextBox();
             this.NuevoButton = new System.Windows.Forms.Button();
             this.GuardarButton = new System.Windows.Forms.Button();
             this.EliminarButton = new System.Windows.Forms.Button();
             this.BuscarButton = new System.Windows.Forms.Button();
             this.MyError = new System.Windows.Forms.ErrorProvider(this.components);
+            this.MatriculaMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.CedulaMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.TelefonoMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.CelularMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.BalanceTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MyError)).BeginInit();
             this.SuspendLayout();
@@ -85,13 +85,6 @@
             this.MatriculaLabel.Size = new System.Drawing.Size(50, 13);
             this.MatriculaLabel.TabIndex = 0;
             this.MatriculaLabel.Text = "Matrìcula";
-            // 
-            // MatriculaTextBox
-            // 
-            this.MatriculaTextBox.Location = new System.Drawing.Point(178, 65);
-            this.MatriculaTextBox.Name = "MatriculaTextBox";
-            this.MatriculaTextBox.Size = new System.Drawing.Size(134, 20);
-            this.MatriculaTextBox.TabIndex = 2;
             // 
             // NombresLabel
             // 
@@ -134,13 +127,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Cédula";
             // 
-            // CedulaTextBox
-            // 
-            this.CedulaTextBox.Location = new System.Drawing.Point(178, 181);
-            this.CedulaTextBox.Name = "CedulaTextBox";
-            this.CedulaTextBox.Size = new System.Drawing.Size(134, 20);
-            this.CedulaTextBox.TabIndex = 2;
-            // 
             // TelefonoLabel
             // 
             this.TelefonoLabel.AutoSize = true;
@@ -150,13 +136,6 @@
             this.TelefonoLabel.TabIndex = 0;
             this.TelefonoLabel.Text = "Teléfono";
             // 
-            // TelefonoTextBox
-            // 
-            this.TelefonoTextBox.Location = new System.Drawing.Point(178, 220);
-            this.TelefonoTextBox.Name = "TelefonoTextBox";
-            this.TelefonoTextBox.Size = new System.Drawing.Size(134, 20);
-            this.TelefonoTextBox.TabIndex = 2;
-            // 
             // CelularLabel
             // 
             this.CelularLabel.AutoSize = true;
@@ -165,13 +144,6 @@
             this.CelularLabel.Size = new System.Drawing.Size(39, 13);
             this.CelularLabel.TabIndex = 0;
             this.CelularLabel.Text = "Celular";
-            // 
-            // CelularTextBox
-            // 
-            this.CelularTextBox.Location = new System.Drawing.Point(178, 262);
-            this.CelularTextBox.Name = "CelularTextBox";
-            this.CelularTextBox.Size = new System.Drawing.Size(134, 20);
-            this.CelularTextBox.TabIndex = 2;
             // 
             // EmailLabel
             // 
@@ -235,13 +207,6 @@
             this.BalanceLabel.TabIndex = 0;
             this.BalanceLabel.Text = "Balance";
             // 
-            // BalanceTextBox
-            // 
-            this.BalanceTextBox.Location = new System.Drawing.Point(178, 414);
-            this.BalanceTextBox.Name = "BalanceTextBox";
-            this.BalanceTextBox.Size = new System.Drawing.Size(134, 20);
-            this.BalanceTextBox.TabIndex = 2;
-            // 
             // NuevoButton
             // 
             this.NuevoButton.Image = ((System.Drawing.Image)(resources.GetObject("NuevoButton.Image")));
@@ -296,11 +261,54 @@
             // 
             this.MyError.ContainerControl = this;
             // 
+            // MatriculaMaskedTextBox
+            // 
+            this.MatriculaMaskedTextBox.Location = new System.Drawing.Point(178, 64);
+            this.MatriculaMaskedTextBox.Mask = "0000-0000";
+            this.MatriculaMaskedTextBox.Name = "MatriculaMaskedTextBox";
+            this.MatriculaMaskedTextBox.Size = new System.Drawing.Size(134, 20);
+            this.MatriculaMaskedTextBox.TabIndex = 6;
+            // 
+            // CedulaMaskedTextBox
+            // 
+            this.CedulaMaskedTextBox.Location = new System.Drawing.Point(178, 181);
+            this.CedulaMaskedTextBox.Mask = "000-0000000-0";
+            this.CedulaMaskedTextBox.Name = "CedulaMaskedTextBox";
+            this.CedulaMaskedTextBox.Size = new System.Drawing.Size(134, 20);
+            this.CedulaMaskedTextBox.TabIndex = 6;
+            // 
+            // TelefonoMaskedTextBox
+            // 
+            this.TelefonoMaskedTextBox.Location = new System.Drawing.Point(178, 220);
+            this.TelefonoMaskedTextBox.Mask = "(999) 000-0000";
+            this.TelefonoMaskedTextBox.Name = "TelefonoMaskedTextBox";
+            this.TelefonoMaskedTextBox.Size = new System.Drawing.Size(134, 20);
+            this.TelefonoMaskedTextBox.TabIndex = 6;
+            // 
+            // CelularMaskedTextBox
+            // 
+            this.CelularMaskedTextBox.Location = new System.Drawing.Point(178, 262);
+            this.CelularMaskedTextBox.Mask = "(999) 000-0000";
+            this.CelularMaskedTextBox.Name = "CelularMaskedTextBox";
+            this.CelularMaskedTextBox.Size = new System.Drawing.Size(134, 20);
+            this.CelularMaskedTextBox.TabIndex = 6;
+            // 
+            // BalanceTextBox
+            // 
+            this.BalanceTextBox.Location = new System.Drawing.Point(178, 414);
+            this.BalanceTextBox.Name = "BalanceTextBox";
+            this.BalanceTextBox.Size = new System.Drawing.Size(134, 20);
+            this.BalanceTextBox.TabIndex = 2;
+            // 
             // EstudianteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(442, 526);
+            this.Controls.Add(this.CelularMaskedTextBox);
+            this.Controls.Add(this.TelefonoMaskedTextBox);
+            this.Controls.Add(this.CedulaMaskedTextBox);
+            this.Controls.Add(this.MatriculaMaskedTextBox);
             this.Controls.Add(this.EliminarButton);
             this.Controls.Add(this.GuardarButton);
             this.Controls.Add(this.BuscarButton);
@@ -309,12 +317,8 @@
             this.Controls.Add(this.FechaDateTime);
             this.Controls.Add(this.EmailTextBox);
             this.Controls.Add(this.BalanceTextBox);
-            this.Controls.Add(this.CelularTextBox);
-            this.Controls.Add(this.TelefonoTextBox);
-            this.Controls.Add(this.CedulaTextBox);
             this.Controls.Add(this.ApellidosTextBox);
             this.Controls.Add(this.NombresTextBox);
-            this.Controls.Add(this.MatriculaTextBox);
             this.Controls.Add(this.numericUpDown);
             this.Controls.Add(this.BalanceLabel);
             this.Controls.Add(this.SexoLabel);
@@ -342,17 +346,13 @@
         private System.Windows.Forms.Label IDlabel;
         private System.Windows.Forms.NumericUpDown numericUpDown;
         private System.Windows.Forms.Label MatriculaLabel;
-        private System.Windows.Forms.TextBox MatriculaTextBox;
         private System.Windows.Forms.Label NombresLabel;
         private System.Windows.Forms.TextBox NombresTextBox;
         private System.Windows.Forms.Label ApellidosLabel;
         private System.Windows.Forms.TextBox ApellidosTextBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox CedulaTextBox;
         private System.Windows.Forms.Label TelefonoLabel;
-        private System.Windows.Forms.TextBox TelefonoTextBox;
         private System.Windows.Forms.Label CelularLabel;
-        private System.Windows.Forms.TextBox CelularTextBox;
         private System.Windows.Forms.Label EmailLabel;
         private System.Windows.Forms.TextBox EmailTextBox;
         private System.Windows.Forms.Label label2;
@@ -360,11 +360,15 @@
         private System.Windows.Forms.Label SexoLabel;
         private System.Windows.Forms.ComboBox SexoComboBox;
         private System.Windows.Forms.Label BalanceLabel;
-        private System.Windows.Forms.TextBox BalanceTextBox;
         private System.Windows.Forms.Button NuevoButton;
         private System.Windows.Forms.Button GuardarButton;
         private System.Windows.Forms.Button EliminarButton;
         private System.Windows.Forms.Button BuscarButton;
         private System.Windows.Forms.ErrorProvider MyError;
+        private System.Windows.Forms.MaskedTextBox MatriculaMaskedTextBox;
+        private System.Windows.Forms.MaskedTextBox CelularMaskedTextBox;
+        private System.Windows.Forms.MaskedTextBox TelefonoMaskedTextBox;
+        private System.Windows.Forms.MaskedTextBox CedulaMaskedTextBox;
+        private System.Windows.Forms.TextBox BalanceTextBox;
     }
 }

@@ -16,17 +16,18 @@ namespace Registro1.UI.Registros
         public EstudianteForm()
         {
             InitializeComponent();
+            
         }
 
         private void LimpiarCampos()
         {
             numericUpDown.Value = 0;
-            MatriculaTextBox.Text = string.Empty;
+            MatriculaMaskedTextBox.Text = string.Empty;
             NombresTextBox.Text = string.Empty;
             ApellidosTextBox.Text = string.Empty;
-            CedulaTextBox.Text = string.Empty;
-            TelefonoTextBox.Text = string.Empty;
-            CelularTextBox.Text = string.Empty;
+            CedulaMaskedTextBox.Text = string.Empty;
+            TelefonoMaskedTextBox.Text = string.Empty;
+            CelularMaskedTextBox.Text = string.Empty;
             EmailTextBox.Text = string.Empty;
             FechaDateTime.Value = DateTime.Now;
             SexoComboBox.Text = string.Empty;
@@ -37,12 +38,12 @@ namespace Registro1.UI.Registros
         {
             Estudiante estudiante = new Estudiante();
             estudiante.EstudianteID = Convert.ToInt32(numericUpDown.Value);
-            estudiante.Matricula = MatriculaTextBox.Text;
+            estudiante.Matricula = MatriculaMaskedTextBox.Text;
             estudiante.Nombres = NombresTextBox.Text;
             estudiante.Apellidos = ApellidosTextBox.Text;
-            estudiante.Cedula = CedulaTextBox.Text;
-            estudiante.Telefono = TelefonoTextBox.Text;
-            estudiante.Celular = CelularTextBox.Text;
+            estudiante.Cedula = CedulaMaskedTextBox.Text;
+            estudiante.Telefono = TelefonoMaskedTextBox.Text;
+            estudiante.Celular = CedulaMaskedTextBox.Text;
             estudiante.Email = EmailTextBox.Text;
             estudiante.FechaNacimiento = FechaDateTime.Value;
             if (SexoComboBox.SelectedItem.ToString() == "Femenino")
@@ -59,12 +60,12 @@ namespace Registro1.UI.Registros
         private void LlenarCampos(Estudiante estudiante)
         {
             numericUpDown.Value = estudiante.EstudianteID;
-            MatriculaTextBox.Text = estudiante.Matricula;
+            MatriculaMaskedTextBox.Text = estudiante.Matricula;
             NombresTextBox.Text = estudiante.Nombres;
             ApellidosTextBox.Text = estudiante.Apellidos;
-            CedulaTextBox.Text = estudiante.Cedula;
-            TelefonoTextBox.Text = estudiante.Telefono;
-            CelularTextBox.Text = estudiante.Celular;
+            CedulaMaskedTextBox.Text = estudiante.Cedula;
+            TelefonoMaskedTextBox.Text = estudiante.Telefono;
+            CelularMaskedTextBox.Text = estudiante.Celular;
             EmailTextBox.Text = estudiante.Email;
             FechaDateTime.Value = estudiante.FechaNacimiento;
             if (estudiante.Sexo == 0)
