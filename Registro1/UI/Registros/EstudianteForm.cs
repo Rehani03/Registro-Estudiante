@@ -7,21 +7,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Registro1.UI.Registros;
 
-namespace Registro1
+namespace Registro1.UI.Registros
 {
-    public partial class RegistroForm : Form
+    public partial class EstudianteForm : Form
     {
-        public RegistroForm()
+        public EstudianteForm()
         {
             InitializeComponent();
         }
 
-        private void EstudianteToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void GuardarButton_Click(object sender, EventArgs e)
         {
-            EstudianteForm ef = new EstudianteForm();
-            ef.Show();
+
+        }
+
+        private void NuevoButton_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

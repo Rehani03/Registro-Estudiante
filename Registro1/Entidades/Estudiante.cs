@@ -11,6 +11,7 @@ namespace Registro1.Entidades
     {
         private int estudianteID;
         private string matricula;
+        private string nombres;
         private string apellidos;
         private string cedula;
         private string telefono;
@@ -36,5 +37,6 @@ namespace Registro1.Entidades
         public DateTime FechaNacimiento { get => fechaNacimiento; set => fechaNacimiento = value; }
         public int Sexo { get => sexo; set => sexo = value; }
         public double Balance { get => balance; set => balance = value; }
+        public string Nombres { get => nombres; set => nombres = value; }
     }
 }
