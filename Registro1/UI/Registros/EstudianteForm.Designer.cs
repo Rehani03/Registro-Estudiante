@@ -244,6 +244,7 @@
             this.EliminarButton.Text = "Eliminar";
             this.EliminarButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.EliminarButton.UseVisualStyleBackColor = true;
+            this.EliminarButton.Click += new System.EventHandler(this.EliminarButton_Click);
             // 
             // BuscarButton
             // 
@@ -256,6 +257,7 @@
             this.BuscarButton.Text = "Buscar";
             this.BuscarButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BuscarButton.UseVisualStyleBackColor = true;
+            this.BuscarButton.Click += new System.EventHandler(this.BuscarButton_Click);
             // 
             // MyError
             // 
@@ -268,7 +270,6 @@
             this.MatriculaMaskedTextBox.Name = "MatriculaMaskedTextBox";
             this.MatriculaMaskedTextBox.Size = new System.Drawing.Size(134, 20);
             this.MatriculaMaskedTextBox.TabIndex = 6;
-//            this.MatriculaMaskedTextBox.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.MatriculaMaskedTextBox_MaskInputRejected);
             // 
             // CedulaMaskedTextBox
             // 

@@ -19,7 +19,7 @@ namespace Registro1.Entidades
         private string email;
         private DateTime fechaNacimiento;
         private int sexo;
-        private double balance;
+        private string balance;
 
         public Estudiante()
         {
@@ -27,16 +27,16 @@ namespace Registro1.Entidades
         }
 
         [Key]
-        public int EstudianteID { get => estudianteID; set => estudianteID = value; }
-        public string Matricula { get => matricula; set => matricula = value; }
-        public string Apellidos { get => apellidos; set => apellidos = value; }
-        public string Cedula { get => cedula; set => cedula = value; }
-        public string Telefono { get => telefono; set => telefono = value; }
-        public string Celular { get => celular; set => celular = value; }
-        public string Email { get => email; set => email = value; }
-        public DateTime FechaNacimiento { get => fechaNacimiento; set => fechaNacimiento = value; }
-        public int Sexo { get => sexo; set => sexo = value; }
-        public double Balance { get => balance; set => balance = value; }
-        public string Nombres { get => nombres; set => nombres = value; }
+        public int EstudianteID { get; set; }
+        public string Matricula { get ; set; }
+        public string Nombres { get; set; }
+        public string Apellidos { get ; set ; }
+        public string Cedula { get ; set ; }
+        public string Telefono { get; set ; }
+        public string Celular { get ; set ; }
+        public string Email { get ; set ; }
+        public DateTime FechaNacimiento { get ; set ; }
+        public int Sexo { get ; set ; }
+        public string Balance { get; set ; }
     }
 }

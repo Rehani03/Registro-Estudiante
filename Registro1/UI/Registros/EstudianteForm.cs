@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Registro1.Entidades;
+using Registro1.BLL;
 
 namespace Registro1.UI.Registros
 {
@@ -52,7 +53,8 @@ namespace Registro1.UI.Registros
             else
                 if (SexoComboBox.SelectedItem.ToString() == "Masculino")
                 estudiante.Sexo = 1;
-            estudiante.Balance = Convert.ToDouble(BalanceMaskedTextBox.Text);
+
+            estudiante.Balance = BalanceMaskedTextBox.Text;
 
 
             return estudiante;
@@ -82,7 +84,7 @@ namespace Registro1.UI.Registros
                      SexoComboBox.Show();
                 }
                 
-            BalanceMaskedTextBox.Text = Convert.ToString(estudiante.Balance);
+            BalanceMaskedTextBox.Text = estudiante.Balance;
         }
 
         private bool ValidarCampos()
@@ -148,17 +150,44 @@ namespace Registro1.UI.Registros
             return flag; 
         }
 
+        private bool ExisteEnLaBaseDeDatos()
+        {
+            Estudiante estudiante = EstudianteBLL.Buscar((int)numericUpDown.Value);
+            return (estudiante != null);
+        }
 
-
+        //Boton guardar del menu de registo de estudiante
         private void GuardarButton_Click(object sender, EventArgs e)
         {
-            //Estudiante estudiante;
-            //bool flag = false;
+            Estudiante estudiante;
+            bool flag = false;
 
             if (!ValidarCampos())
                 return;
-           // LimpiarCampos();
+            estudiante = LlenarClase();
 
+            if (numericUpDown.Value == 0)
+                flag = EstudianteBLL.Guardar(estudiante);
+            else
+            {
+                if (!ExisteEnLaBaseDeDatos())
+                {
+                    MessageBox.Show("No se puede modificar porque no existe en la base de datos",
+                           "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                flag = EstudianteBLL.Modificar(estudiante);
+            }
+
+
+            if (flag)
+            {
+                LimpiarCampos();
+                MessageBox.Show("Guardado!!", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            else
+                MessageBox.Show("No fue posible guardar!!", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void NuevoButton_Click(object sender, EventArgs e)
@@ -166,6 +195,38 @@ namespace Registro1.UI.Registros
             LimpiarCampos();
         }
 
-        
+        private void BuscarButton_Click(object sender, EventArgs e)
+        {
+            int id;
+            Estudiante estudiante = new Estudiante();
+            id = Convert.ToInt32(numericUpDown.Value);
+
+            LimpiarCampos();
+
+            estudiante = EstudianteBLL.Buscar(id);
+            if(estudiante!= null)
+            {
+                MessageBox.Show("Estudiante encontrado");
+                LlenarCampos(estudiante);
+            }
+            else
+            {
+                MessageBox.Show("Estudiante no encontrado");
+            }
+
+        }
+
+        private void EliminarButton_Click(object sender, EventArgs e)
+        {
+            MyError.Clear();
+            int id;
+            id = Convert.ToInt32(numericUpDown.Value);
+
+            LimpiarCampos();
+            if (EstudianteBLL.Eliminar(id))
+                MessageBox.Show("Estudiante Eliminado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else
+                MessageBox.Show("No se puede eliminar, porque no existe.");
+        }
     }
 }
