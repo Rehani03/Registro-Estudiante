@@ -14,6 +14,11 @@ namespace Registro1.UI.Registros
 {
     public partial class EstudianteForm : Form
     {
+
+        private const int MAXNOMBRES = 25;
+        private const int MAXAPELLIDOS = 25;
+        private const int MAXEMAIL = 40;
+        private const int MAXBALANCE = 7;
         public EstudianteForm()
         {
             InitializeComponent();
@@ -73,14 +78,13 @@ namespace Registro1.UI.Registros
             FechaDateTime.Value = estudiante.FechaNacimiento;
             if (estudiante.Sexo == 0)
             {
-                SexoComboBox.SelectedIndex = 0;
+                SexoComboBox.Text = "Femenino";
                 SexoComboBox.Show();
-
             }    
             else
                 if (estudiante.Sexo == 1)
                 {
-                     SexoComboBox.SelectedIndex = 1;
+                     SexoComboBox.Text = "Masculino";
                      SexoComboBox.Show();
                 }
                 
@@ -104,9 +108,23 @@ namespace Registro1.UI.Registros
                 flag = false;
             }
 
+            if(NombresTextBox.Text.Count() > MAXNOMBRES)
+            {
+                MyError.SetError(NombresTextBox, "El campo Nombres solo puede contener " 
+                                + MAXNOMBRES + " caracteres ");
+                flag = false;
+            }
+
             if (String.IsNullOrWhiteSpace(ApellidosTextBox.Text))
             {
                 MyError.SetError(ApellidosTextBox, "El campo Apellidos no puede estar vacio.");
+                flag = false;
+            }
+
+            if (ApellidosTextBox.Text.Count() > MAXAPELLIDOS)
+            {
+                MyError.SetError(ApellidosTextBox, "El campo Apellidos solo puede contener " 
+                                + MAXAPELLIDOS + " caracteres.");
                 flag = false;
             }
 
@@ -134,16 +152,29 @@ namespace Registro1.UI.Registros
                 flag = false;
             }
 
-            if (SexoComboBox.SelectedIndex == -1)
+            if (EmailTextBox.Text.Count() > MAXEMAIL)
             {
-                MyError.SetError(SexoComboBox, "El campo Sexo no puede estar vacio.");
+                MyError.SetError(EmailTextBox, "El campo Nombre solo puede contener " 
+                                + MAXEMAIL + " caracteres. ");
                 flag = false;
             }
 
+            if (SexoComboBox.SelectedIndex == -1)
+            {
+                MyError.SetError(SexoComboBox, "Debe elegir un genero en el campo Sexo.");
+                flag = false;
+            }
 
             if (String.IsNullOrWhiteSpace(BalanceMaskedTextBox.Text))
             {
                 MyError.SetError(BalanceMaskedTextBox, "El campo Balance no puede estar vacio");
+                flag = false;
+            }
+
+            if (BalanceMaskedTextBox.Text.Count() > MAXBALANCE)
+            {
+                MyError.SetError(BalanceMaskedTextBox, "El campo Nombre solo puede contener " 
+                                + MAXBALANCE + " caracteres ");
                 flag = false;
             }
 
@@ -193,6 +224,7 @@ namespace Registro1.UI.Registros
         private void NuevoButton_Click(object sender, EventArgs e)
         {
             LimpiarCampos();
+            
         }
 
         private void BuscarButton_Click(object sender, EventArgs e)
