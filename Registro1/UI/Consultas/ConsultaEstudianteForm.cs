@@ -29,38 +29,39 @@ namespace Registro1.UI.Consultas
                 {
                     case 0: //todo
                         listado = EstudianteBLL.GetList(p => true);
-                        break;
+                    break;
                     case 1: //ID
                         int id = Convert.ToInt32(CriterioTextBox.Text);
                         listado = EstudianteBLL.GetList(p => p.EstudianteID == id);
-                        break;
-                    case 3: //matricula
+                    break;
+                    case 2: //matricula
                         string matricua = Convert.ToString(CriterioTextBox.Text);
                         listado = EstudianteBLL.GetList(p => p.Matricula == matricua);
                         break;
-                    case 4: //nombres
+                    case 3: //nombres
                         listado = EstudianteBLL.GetList(p => p.Nombres.Contains(CriterioTextBox.Text));
                         break;
-                    case 5: //apellidos
+                    case 4: //apellidos
                         listado = EstudianteBLL.GetList(p => p.Apellidos.Contains(CriterioTextBox.Text));
                         break;
-                    case 6: //cedula
+                    case 5: //cedula
                         listado = EstudianteBLL.GetList(p => p.Cedula.Contains(CriterioTextBox.Text));
                         break;
-                    case 7: //balance
+                    case 6: //balance
                         listado = EstudianteBLL.GetList(p => p.Balance.Contains(CriterioTextBox.Text));
                         break;
 
                 }
                 listado = listado.Where(p => p.FechaNacimiento.Date >= DesdeDataTime.Value.Date &&
                                         p.FechaNacimiento.Date <= HastaDataTime.Value.Date).ToList();
-            }
-            else
-            {
-                listado = EstudianteBLL.GetList(p => true);
-            }
+             }
+             else
+             {
+                 listado = EstudianteBLL.GetList(p => true);
+             }
             ConsultaDataGridView.DataSource = null;
             ConsultaDataGridView.DataSource = listado;
+
         }
     }
 }
