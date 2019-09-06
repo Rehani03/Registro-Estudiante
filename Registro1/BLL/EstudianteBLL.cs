@@ -18,6 +18,7 @@ namespace Registro1.BLL
             bool flag = false;
             Contexto db = new Contexto();
 
+
             try
             {
                 if (db.Estudiante.Add(estudiante) != null)

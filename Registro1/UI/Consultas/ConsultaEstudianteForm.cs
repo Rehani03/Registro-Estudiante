@@ -41,6 +41,7 @@ namespace Registro1.UI.Consultas
                     case 3: //nombres
                         listado = EstudianteBLL.GetList(p => p.Nombres.Contains(CriterioTextBox.Text));
                         break;
+
                     case 4: //apellidos
                         listado = EstudianteBLL.GetList(p => p.Apellidos.Contains(CriterioTextBox.Text));
                         break;
