@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Registro1.UI.Registros;
+using Registro1.UI.Consultas;
 
 namespace Registro1
 {
@@ -22,6 +23,12 @@ namespace Registro1
         {
             EstudianteForm ef = new EstudianteForm();
             ef.Show();
+        }
+
+        private void ConsultarEstudianteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConsultaEstudianteForm cef = new ConsultaEstudianteForm();
+            cef.Show();
         }
     }
 }
