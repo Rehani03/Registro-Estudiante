@@ -98,13 +98,13 @@ namespace Registro1.UI.Registros
 
             if (!MatriculaMaskedTextBox.MaskFull)
             {
-                MyError.SetError(MatriculaMaskedTextBox, "El campo Matrìcula no puede estar vacio.");
+                MyError.SetError(MatriculaMaskedTextBox, "El campo Matrìcula no puede estar vacìo.");
                 flag = false;
             }
 
             if (String.IsNullOrWhiteSpace(NombresTextBox.Text))
             {
-                MyError.SetError(NombresTextBox, "El campo Nombre no puede estar vacio.");
+                MyError.SetError(NombresTextBox, "El campo Nombre no puede estar vacìo.");
                 flag = false;
             }
 
@@ -130,25 +130,25 @@ namespace Registro1.UI.Registros
 
             if (!CedulaMaskedTextBox.MaskFull)
             {
-                MyError.SetError(CedulaMaskedTextBox, "El campo Cédula no puede estar vacio.");
+                MyError.SetError(CedulaMaskedTextBox, "El campo Cédula no puede estar vacìo.");
                 flag = false;
             }
 
             if (!TelefonoMaskedTextBox.MaskFull)
             {
-                MyError.SetError(TelefonoMaskedTextBox, "El campo Teléfono no puede estar vacio.");
+                MyError.SetError(TelefonoMaskedTextBox, "El campo Teléfono no puede estar vacìo.");
                 flag = false;
             }
 
             if (!CelularMaskedTextBox.MaskFull)
             {
-                MyError.SetError(CelularMaskedTextBox, "El campo Celular no puede estar vacio.");
+                MyError.SetError(CelularMaskedTextBox, "El campo Celular no puede estar vacìo.");
                 flag = false;
             }
 
             if (String.IsNullOrWhiteSpace(EmailTextBox.Text))
             {
-                MyError.SetError(EmailTextBox, "El campo Email no puede estar vacio.");
+                MyError.SetError(EmailTextBox, "El campo Email no puede estar vacìo.");
                 flag = false;
             }
 
@@ -161,19 +161,19 @@ namespace Registro1.UI.Registros
 
             if (SexoComboBox.SelectedIndex == -1)
             {
-                MyError.SetError(SexoComboBox, "Debe elegir un genero en el campo Sexo.");
+                MyError.SetError(SexoComboBox, "Debe elegir un género en el campo Sexo.");
                 flag = false;
             }
 
             if (String.IsNullOrWhiteSpace(BalanceMaskedTextBox.Text))
             {
-                MyError.SetError(BalanceMaskedTextBox, "El campo Balance no puede estar vacio");
+                MyError.SetError(BalanceMaskedTextBox, "El campo Balance no puede estar vacìo");
                 flag = false;
             }
 
             if (BalanceMaskedTextBox.Text.Count() > MAXBALANCE)
             {
-                MyError.SetError(BalanceMaskedTextBox, "El campo Nombre solo puede contener " 
+                MyError.SetError(BalanceMaskedTextBox, "El campo Balance solo puede contener " 
                                 + MAXBALANCE + " caracteres ");
                 flag = false;
             }
@@ -238,7 +238,7 @@ namespace Registro1.UI.Registros
             estudiante = EstudianteBLL.Buscar(id);
             if(estudiante!= null)
             {
-                MessageBox.Show("Estudiante encontrado");
+               
                 LlenarCampos(estudiante);
             }
             else
