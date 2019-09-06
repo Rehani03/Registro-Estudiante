@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Registro1.Entidades;
 using Registro1.DAL;
 using System.Data.Entity;
+using System.Linq.Expressions;
 
 namespace Registro1.BLL
 {
@@ -101,6 +102,27 @@ namespace Registro1.BLL
             }
 
             return estudiante;
+        }
+
+        public static List<Estudiante> GetList(Expression<Func<Estudiante, bool>> estudiante)
+        {
+            List<Estudiante> Lista = new List<Estudiante>();
+
+            Contexto db = new Contexto();
+            try
+            {
+                Lista = db.Estudiante.Where(estudiante).ToList();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                db.Dispose();
+            }
+            return Lista;
         }
     }
 }

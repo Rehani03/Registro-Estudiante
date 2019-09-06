@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EstudianteForm));
             this.IDlabel = new System.Windows.Forms.Label();
-            this.numericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.IDnumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.MatriculaLabel = new System.Windows.Forms.Label();
             this.NombresLabel = new System.Windows.Forms.Label();
             this.NombresTextBox = new System.Windows.Forms.TextBox();
@@ -57,7 +57,7 @@
             this.TelefonoMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.CelularMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.BalanceMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IDnumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MyError)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,12 +70,12 @@
             this.IDlabel.TabIndex = 0;
             this.IDlabel.Text = "ID";
             // 
-            // numericUpDown
+            // IDnumericUpDown
             // 
-            this.numericUpDown.Location = new System.Drawing.Point(178, 28);
-            this.numericUpDown.Name = "numericUpDown";
-            this.numericUpDown.Size = new System.Drawing.Size(134, 20);
-            this.numericUpDown.TabIndex = 1;
+            this.IDnumericUpDown.Location = new System.Drawing.Point(178, 28);
+            this.IDnumericUpDown.Name = "IDnumericUpDown";
+            this.IDnumericUpDown.Size = new System.Drawing.Size(134, 20);
+            this.IDnumericUpDown.TabIndex = 1;
             // 
             // MatriculaLabel
             // 
@@ -322,7 +322,7 @@
             this.Controls.Add(this.EmailTextBox);
             this.Controls.Add(this.ApellidosTextBox);
             this.Controls.Add(this.NombresTextBox);
-            this.Controls.Add(this.numericUpDown);
+            this.Controls.Add(this.IDnumericUpDown);
             this.Controls.Add(this.BalanceLabel);
             this.Controls.Add(this.SexoLabel);
             this.Controls.Add(this.label2);
@@ -337,7 +337,7 @@
             this.MaximizeBox = false;
             this.Name = "EstudianteForm";
             this.Text = "Registro de Estudiante";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IDnumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MyError)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -347,7 +347,7 @@
         #endregion
 
         private System.Windows.Forms.Label IDlabel;
-        private System.Windows.Forms.NumericUpDown numericUpDown;
+        private System.Windows.Forms.NumericUpDown IDnumericUpDown;
         private System.Windows.Forms.Label MatriculaLabel;
         private System.Windows.Forms.Label NombresLabel;
         private System.Windows.Forms.TextBox NombresTextBox;

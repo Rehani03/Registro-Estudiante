@@ -27,7 +27,7 @@ namespace Registro1.UI.Registros
 
         private void LimpiarCampos()
         {
-            numericUpDown.Value = 0;
+            IDnumericUpDown.Value = 0;
             MatriculaMaskedTextBox.Text = string.Empty;
             NombresTextBox.Text = string.Empty;
             ApellidosTextBox.Text = string.Empty;
@@ -44,7 +44,7 @@ namespace Registro1.UI.Registros
         private Estudiante LlenarClase()
         {
             Estudiante estudiante = new Estudiante();
-            estudiante.EstudianteID = Convert.ToInt32(numericUpDown.Value);
+            estudiante.EstudianteID = Convert.ToInt32(IDnumericUpDown.Value);
             estudiante.Matricula = MatriculaMaskedTextBox.Text;
             estudiante.Nombres = NombresTextBox.Text;
             estudiante.Apellidos = ApellidosTextBox.Text;
@@ -67,7 +67,7 @@ namespace Registro1.UI.Registros
 
         private void LlenarCampos(Estudiante estudiante)
         {
-            numericUpDown.Value = estudiante.EstudianteID;
+            IDnumericUpDown.Value = estudiante.EstudianteID;
             MatriculaMaskedTextBox.Text = estudiante.Matricula;
             NombresTextBox.Text = estudiante.Nombres;
             ApellidosTextBox.Text = estudiante.Apellidos;
@@ -183,7 +183,7 @@ namespace Registro1.UI.Registros
 
         private bool ExisteEnLaBaseDeDatos()
         {
-            Estudiante estudiante = EstudianteBLL.Buscar((int)numericUpDown.Value);
+            Estudiante estudiante = EstudianteBLL.Buscar((int)IDnumericUpDown.Value);
             return (estudiante != null);
         }
 
@@ -197,7 +197,7 @@ namespace Registro1.UI.Registros
                 return;
             estudiante = LlenarClase();
 
-            if (numericUpDown.Value == 0)
+            if (IDnumericUpDown.Value == 0)
                 flag = EstudianteBLL.Guardar(estudiante);
             else
             {
@@ -231,7 +231,7 @@ namespace Registro1.UI.Registros
         {
             int id;
             Estudiante estudiante = new Estudiante();
-            id = Convert.ToInt32(numericUpDown.Value);
+            id = Convert.ToInt32(IDnumericUpDown.Value);
 
             LimpiarCampos();
 
@@ -252,13 +252,16 @@ namespace Registro1.UI.Registros
         {
             MyError.Clear();
             int id;
-            id = Convert.ToInt32(numericUpDown.Value);
+            id = Convert.ToInt32(IDnumericUpDown.Value);
 
             LimpiarCampos();
+
             if (EstudianteBLL.Eliminar(id))
                 MessageBox.Show("Estudiante Eliminado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
                 MessageBox.Show("No se puede eliminar, porque no existe.");
         }
+
+
     }
 }
