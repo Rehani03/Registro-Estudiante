@@ -48,9 +48,7 @@ namespace Registro1.UI.Consultas
                     case 5: //cedula
                         listado = EstudianteBLL.GetList(p => p.Cedula.Contains(CriterioTextBox.Text));
                         break;
-                    case 6: //balance
-                        listado = EstudianteBLL.GetList(p => p.Balance.Contains(CriterioTextBox.Text));
-                        break;
+                  
 
                 }
                 //fecha
@@ -65,5 +63,6 @@ namespace Registro1.UI.Consultas
             ConsultaDataGridView.DataSource = listado;
 
         }
+
     }
 }

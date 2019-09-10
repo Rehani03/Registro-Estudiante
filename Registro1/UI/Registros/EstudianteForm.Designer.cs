@@ -56,7 +56,7 @@
             this.CedulaMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.TelefonoMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.CelularMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
-            this.BalanceMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.BalanceTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.IDnumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MyError)).BeginInit();
             this.SuspendLayout();
@@ -295,20 +295,18 @@
             this.CelularMaskedTextBox.Size = new System.Drawing.Size(134, 20);
             this.CelularMaskedTextBox.TabIndex = 6;
             // 
-            // BalanceMaskedTextBox
+            // BalanceTextBox
             // 
-            this.BalanceMaskedTextBox.Location = new System.Drawing.Point(178, 414);
-            this.BalanceMaskedTextBox.Mask = "#######";
-            this.BalanceMaskedTextBox.Name = "BalanceMaskedTextBox";
-            this.BalanceMaskedTextBox.Size = new System.Drawing.Size(134, 20);
-            this.BalanceMaskedTextBox.TabIndex = 6;
+            this.BalanceTextBox.Location = new System.Drawing.Point(178, 414);
+            this.BalanceTextBox.Name = "BalanceTextBox";
+            this.BalanceTextBox.Size = new System.Drawing.Size(134, 20);
+            this.BalanceTextBox.TabIndex = 2;
             // 
             // EstudianteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(442, 526);
-            this.Controls.Add(this.BalanceMaskedTextBox);
             this.Controls.Add(this.CelularMaskedTextBox);
             this.Controls.Add(this.TelefonoMaskedTextBox);
             this.Controls.Add(this.CedulaMaskedTextBox);
@@ -320,6 +318,7 @@
             this.Controls.Add(this.SexoComboBox);
             this.Controls.Add(this.FechaDateTime);
             this.Controls.Add(this.EmailTextBox);
+            this.Controls.Add(this.BalanceTextBox);
             this.Controls.Add(this.ApellidosTextBox);
             this.Controls.Add(this.NombresTextBox);
             this.Controls.Add(this.IDnumericUpDown);
@@ -372,6 +371,6 @@
         private System.Windows.Forms.MaskedTextBox CelularMaskedTextBox;
         private System.Windows.Forms.MaskedTextBox TelefonoMaskedTextBox;
         private System.Windows.Forms.MaskedTextBox CedulaMaskedTextBox;
-        private System.Windows.Forms.MaskedTextBox BalanceMaskedTextBox;
+        private System.Windows.Forms.TextBox BalanceTextBox;
     }
 }

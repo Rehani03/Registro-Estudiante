@@ -15,10 +15,10 @@ namespace Registro1.UI.Registros
     public partial class EstudianteForm : Form
     {
 
-        private const int MAXNOMBRES = 25;
-        private const int MAXAPELLIDOS = 25;
+        private const int MAXNOMBRES = 35;
+        private const int MAXAPELLIDOS = 35;
         private const int MAXEMAIL = 40;
-        private const int MAXBALANCE = 7;
+        private const int MAXBALANCE = 14;
         public EstudianteForm()
         {
             InitializeComponent();
@@ -37,7 +37,7 @@ namespace Registro1.UI.Registros
             EmailTextBox.Text = string.Empty;
             FechaDateTime.Value = DateTime.Now;
             SexoComboBox.Text = string.Empty;
-            BalanceMaskedTextBox.Text = string.Empty;
+            BalanceTextBox.Text = string.Empty;
             MyError.Clear();
         }
 
@@ -59,7 +59,7 @@ namespace Registro1.UI.Registros
                 if (SexoComboBox.SelectedItem.ToString() == "Masculino")
                 estudiante.Sexo = 1;
 
-            estudiante.Balance = BalanceMaskedTextBox.Text;
+            estudiante.Balance = Convert.ToDecimal(BalanceTextBox.Text);
 
 
             return estudiante;
@@ -88,7 +88,7 @@ namespace Registro1.UI.Registros
                      SexoComboBox.Show();
                 }
                 
-            BalanceMaskedTextBox.Text = estudiante.Balance;
+            BalanceTextBox.Text = Convert.ToString(estudiante.Balance);
         }
 
         private bool ValidarCampos()
@@ -165,15 +165,25 @@ namespace Registro1.UI.Registros
                 flag = false;
             }
 
-            if (String.IsNullOrWhiteSpace(BalanceMaskedTextBox.Text))
+            if (String.IsNullOrWhiteSpace(BalanceTextBox.Text))
             {
-                MyError.SetError(BalanceMaskedTextBox, "El campo Balance no puede estar vacìo");
+                MyError.SetError(BalanceTextBox, "El campo Balance no puede estar vacío.");
                 flag = false;
             }
 
-            if (BalanceMaskedTextBox.Text.Count() > MAXBALANCE)
+            try
             {
-                MyError.SetError(BalanceMaskedTextBox, "El campo Balance solo puede contener " 
+                decimal balance = Convert.ToDecimal(BalanceTextBox.Text);
+            }
+            catch(FormatException error)
+            {
+                MyError.SetError(BalanceTextBox, "El Balance debe ser numerico.");
+                flag = false;
+            }
+
+            if (BalanceTextBox.Text.Count() > MAXBALANCE)
+            {
+                MyError.SetError(BalanceTextBox, "El campo Balance solo puede contener " 
                                 + MAXBALANCE + " caracteres ");
                 flag = false;
             }

@@ -19,7 +19,7 @@ namespace Registro1.Entidades
         private string email;
         private DateTime fechaNacimiento;
         private int sexo;
-        private string balance;
+        private decimal balance;
 
         public Estudiante()
         {
@@ -37,6 +37,6 @@ namespace Registro1.Entidades
         public string Email { get ; set ; }
         public DateTime FechaNacimiento { get ; set ; }
         public int Sexo { get ; set ; }
-        public string Balance { get; set ; }
+        public decimal Balance { get; set ; }
     }
 }
