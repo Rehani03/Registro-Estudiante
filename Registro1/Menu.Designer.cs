@@ -56,8 +56,8 @@
             this.estudianteToolStripMenuItem,
             this.registrarInscripciónToolStripMenuItem});
             this.registrarToolStripMenuItem.Name = "registrarToolStripMenuItem";
-            this.registrarToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
-            this.registrarToolStripMenuItem.Text = "Registro";
+            this.registrarToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.registrarToolStripMenuItem.Text = "Registros";
             // 
             // estudianteToolStripMenuItem
             // 
