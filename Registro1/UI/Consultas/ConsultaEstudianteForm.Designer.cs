@@ -94,8 +94,7 @@
             "Matrìcula",
             "Nombres",
             "Apellidos",
-            "Cédula",
-            "Balance"});
+            "Cédula"});
             this.FiltroComboBox.Location = new System.Drawing.Point(279, 36);
             this.FiltroComboBox.Name = "FiltroComboBox";
             this.FiltroComboBox.Size = new System.Drawing.Size(121, 21);

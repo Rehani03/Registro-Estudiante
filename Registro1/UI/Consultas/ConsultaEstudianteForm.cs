@@ -29,14 +29,16 @@ namespace Registro1.UI.Consultas
                 {
                     case 0: //todo
                         listado = EstudianteBLL.GetList(p => true);
+                        MessageBox.Show("Todo");
                     break;
                     case 1: //ID
                         int id = Convert.ToInt32(CriterioTextBox.Text);
                         listado = EstudianteBLL.GetList(p => p.EstudianteID == id);
-                    break;
+                        MessageBox.Show("ID");
+                        break;
                     case 2: //matricula
-                        string matricua = Convert.ToString(CriterioTextBox.Text);
-                        listado = EstudianteBLL.GetList(p => p.Matricula == matricua);
+                      
+                        listado = EstudianteBLL.GetList(p => p.Matricula.Contains(CriterioTextBox.Text));
                         break;
                     case 3: //nombres
                         listado = EstudianteBLL.GetList(p => p.Nombres.Contains(CriterioTextBox.Text));
@@ -52,8 +54,8 @@ namespace Registro1.UI.Consultas
 
                 }
                 //fecha
-                listado = listado.Where(p => p.FechaNacimiento.Date >= DesdeDataTime.Value.Date &&
-                                        p.FechaNacimiento.Date <= HastaDataTime.Value.Date).ToList();
+                /*listado = listado.Where(p => p.FechaNacimiento.Date >= DesdeDataTime.Value.Date &&
+                                        p.FechaNacimiento.Date <= HastaDataTime.Value.Date).ToList();*/
              }
              else
              {

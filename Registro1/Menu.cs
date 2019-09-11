@@ -30,5 +30,11 @@ namespace Registro1
             ConsultaEstudianteForm cef = new ConsultaEstudianteForm();
             cef.Show();
         }
+
+        private void RegistrarInscripciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InscripcionForm inscripcionForm = new InscripcionForm();
+            inscripcionForm.Show();
+        }
     }
 }
