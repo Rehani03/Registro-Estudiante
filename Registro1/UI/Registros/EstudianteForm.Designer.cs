@@ -299,6 +299,7 @@
             // 
             this.BalanceTextBox.Location = new System.Drawing.Point(178, 414);
             this.BalanceTextBox.Name = "BalanceTextBox";
+            this.BalanceTextBox.ReadOnly = true;
             this.BalanceTextBox.Size = new System.Drawing.Size(134, 20);
             this.BalanceTextBox.TabIndex = 2;
             // 

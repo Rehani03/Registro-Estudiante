@@ -18,7 +18,7 @@ namespace Registro1.UI.Registros
         private const int MAXNOMBRES = 35;
         private const int MAXAPELLIDOS = 35;
         private const int MAXEMAIL = 40;
-        private const int MAXBALANCE = 14;
+        //private const int MAXBALANCE = 14;
         public EstudianteForm()
         {
             InitializeComponent();
@@ -59,8 +59,7 @@ namespace Registro1.UI.Registros
                 if (SexoComboBox.SelectedItem.ToString() == "Masculino")
                 estudiante.Sexo = 1;
 
-            estudiante.Balance = Convert.ToDecimal(BalanceTextBox.Text);
-
+            //estudiante.Balance = 0;
 
             return estudiante;
         }
@@ -165,7 +164,7 @@ namespace Registro1.UI.Registros
                 flag = false;
             }
 
-            if (String.IsNullOrWhiteSpace(BalanceTextBox.Text))
+           /* if (String.IsNullOrWhiteSpace(BalanceTextBox.Text))
             {
                 MyError.SetError(BalanceTextBox, "El campo Balance no puede estar vacío.");
                 flag = false;
@@ -186,7 +185,7 @@ namespace Registro1.UI.Registros
                 MyError.SetError(BalanceTextBox, "El campo Balance solo puede contener " 
                                 + MAXBALANCE + " caracteres ");
                 flag = false;
-            }
+            }*/
 
             return flag; 
         }

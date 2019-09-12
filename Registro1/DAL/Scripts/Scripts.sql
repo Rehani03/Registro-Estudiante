@@ -15,4 +15,13 @@ Create Table Estudiante(
 	Sexo int,
 	Balance decimal
 );
-
+Go
+Create Table Inscripcion(
+	IDInscripcion int primary key identity,
+	Fecha date,
+	IDEstudiante int,
+	Comentario varchar(60),
+	Monto decimal,
+	Deposito decimal,
+	Balance decimal
+);

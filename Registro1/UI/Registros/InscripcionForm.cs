@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Registro1.BLL;
 
 namespace Registro1.UI.Registros
 {
@@ -22,6 +23,7 @@ namespace Registro1.UI.Registros
 
         private void LimpiarCamposInscripcion()
         {
+            EstudianteIDNumericUpDown.Enabled = true;
             InscripcionIDNumericUpDown.Value = 0;
             FechaDateTimePicker.Value = DateTime.Now;
             EstudianteIDNumericUpDown.Value = 0;
@@ -34,17 +36,19 @@ namespace Registro1.UI.Registros
 
         private Inscripcion LlenaClaseInscripcion()
         {
-            decimal monto, deposito;
+            decimal monto, deposito, balance;
+            deposito = Convert.ToDecimal(DepositoTextBox.Text);
+            monto = Convert.ToDecimal(MontoTextBox.Text);
+            balance = monto - deposito;
+
             Inscripcion inscripcion = new Inscripcion();
             inscripcion.InscripcionID = Convert.ToInt32(InscripcionIDNumericUpDown.Value);
             inscripcion.Fecha = FechaDateTimePicker.Value;
             inscripcion.EstudianteID = Convert.ToInt32(EstudianteIDNumericUpDown.Value);
             inscripcion.Comentario = ComentarioTextBox.Text;
             inscripcion.Deposito = Convert.ToDecimal(DepositoTextBox.Text);
-            deposito = Convert.ToDecimal(DepositoTextBox.Text);
-            inscripcion.Monto = Convert.ToDecimal(MontoTextBox.Text);
-            monto = Convert.ToDecimal(MontoTextBox.Text);
-            inscripcion.Balance = (monto - deposito);
+            inscripcion.Monto = balance;
+            inscripcion.Balance = balance;
             return inscripcion;
         }
 
@@ -67,6 +71,16 @@ namespace Registro1.UI.Registros
             {
                 MyErrorInscripcion.SetError(ComentarioTextBox, "El campo Comentario no puede estar vacío.");
                 flag = false;
+            }
+            else
+            {
+                if(ComentarioTextBox.Text.Count() > MAXCOMENTARIO)
+                {
+                    MyErrorInscripcion.SetError(ComentarioTextBox, 
+                                                "El campo Comentario no puede tener más "+MAXCOMENTARIO +" caracteres.");
+                    flag = false;
+                }
+
             }
 
             if (String.IsNullOrWhiteSpace(DepositoTextBox.Text))
@@ -110,15 +124,89 @@ namespace Registro1.UI.Registros
             return flag;
         }
 
-        private void NuevoButton_Click(object sender, EventArgs e)
+        private bool ExisteEnLaBaseDeDatosEstudiante()
         {
-            LimpiarCamposInscripcion();
+            Estudiante estudiante = EstudianteBLL.Buscar((int)EstudianteIDNumericUpDown.Value);
+            return (estudiante != null);
         }
 
+        private bool ExisteEnLaBaseDeDatosInscripcion()
+        {
+            Inscripcion inscripcion = InscripcionBLL.Buscar((int)InscripcionIDNumericUpDown.Value);
+            return (inscripcion != null);
+        }
+
+        private void NuevoButton_Click(object sender, EventArgs e)
+        {
+            EstudianteIDNumericUpDown.Enabled = true;
+            LimpiarCamposInscripcion();
+        }
+        //Boton insertar en la base de datos inscripcion
         private void InsertarButton_Click(object sender, EventArgs e)
         {
+            Inscripcion inscripcion;
+            bool flag = false;
+
             if (!ValidarInscripcion())
                 return;
+
+            inscripcion = LlenaClaseInscripcion();
+
+            if(InscripcionIDNumericUpDown.Value == 0 && ExisteEnLaBaseDeDatosEstudiante() == true)
+                flag = InscripcionBLL.Guardar(inscripcion);
+            else
+            {
+                if (!ExisteEnLaBaseDeDatosInscripcion())
+                {
+                    MessageBox.Show("No se puede modificar porque no existe en la base de datos",
+                          "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                flag = InscripcionBLL.Modificar(inscripcion);
+            }
+
+            if (flag)
+            {
+                LimpiarCamposInscripcion();
+                MessageBox.Show("Guardado!!", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            else
+                MessageBox.Show("No fue posible guardar!!", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void BuscarButton_Click(object sender, EventArgs e)
+        {
+            int id;
+            Inscripcion inscripcion = new Inscripcion();
+            id = Convert.ToInt32(InscripcionIDNumericUpDown.Value);
+
+            LimpiarCamposInscripcion();
+
+            inscripcion = InscripcionBLL.Buscar(id);
+            if (inscripcion != null)
+            {
+                EstudianteIDNumericUpDown.Enabled = false;
+                LlenarCamposInscripcion(inscripcion);
+            }
+            else
+            {
+                MessageBox.Show("Incripción no encontrado");
+            }
+        }
+
+        private void EliminarButton_Click(object sender, EventArgs e)
+        {
+            MyErrorInscripcion.Clear();
+            int id;
+            id = Convert.ToInt32(InscripcionIDNumericUpDown.Value);
+
+            LimpiarCamposInscripcion();
+
+            /*if (InscripcionBLL.Eliminar(id))
+                MessageBox.Show("Estudiante Eliminado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else
+                MessageBox.Show("No se puede eliminar, porque no existe.");*/
         }
     }
 }
