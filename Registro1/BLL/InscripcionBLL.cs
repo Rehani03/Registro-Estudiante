@@ -7,6 +7,7 @@ using Registro1.Entidades;
 using Registro1.DAL;
 using System.Data.Entity;
 using System.Linq.Expressions;
+using Registro1.UI.Registros;
 
 namespace Registro1.BLL
 {
@@ -22,9 +23,11 @@ namespace Registro1.BLL
             try
             {
                 if (db.Inscripcion.Add(inscripcion) != null)
+                {
                     flag = db.SaveChanges() > 0;
-                db.Estudiante.Find(inscripcion.EstudianteID).Balance = inscripcion.Balance;
-                flag = db.SaveChanges() > 0;
+                    db.Estudiante.Find(inscripcion.EstudianteID).Balance = inscripcion.Balance;
+                    flag = db.SaveChanges() > 0;
+                }      
             }
             catch (Exception)
             {
@@ -65,14 +68,15 @@ namespace Registro1.BLL
         }
 
         //este metodo elimina la el balance de la incripcion en la base de datos
-        public static bool Eliminar(int id)
+        public static bool Eliminar(int id, int IDEstudiante)
         {
             bool flag = false;
             Contexto db = new Contexto();
+           
             try
             {
                 db.Inscripcion.Find(id).Balance = 0;
-                db.Estudiante.Find(id).Balance = 0;
+                db.Estudiante.Find(IDEstudiante).Balance = 0; 
                 flag = (db.SaveChanges() > 0);
             }
             catch (Exception)

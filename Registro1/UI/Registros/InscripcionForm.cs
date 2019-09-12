@@ -201,10 +201,11 @@ namespace Registro1.UI.Registros
             MyErrorInscripcion.Clear();
             int id;
             id = Convert.ToInt32(InscripcionIDNumericUpDown.Value);
+            int idEstudiante = Convert.ToInt32(EstudianteIDNumericUpDown.Value);
 
             LimpiarCamposInscripcion();
 
-            if (InscripcionBLL.Eliminar(id))
+            if (InscripcionBLL.Eliminar(id, idEstudiante))
                 MessageBox.Show("Balance de Inscripción Eliminado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
                 MessageBox.Show("No se puede eliminar, porque no existe.");

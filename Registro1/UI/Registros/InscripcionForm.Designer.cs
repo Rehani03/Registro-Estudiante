@@ -262,7 +262,6 @@
 
         private System.Windows.Forms.ErrorProvider MyErrorInscripcion;
         private System.Windows.Forms.DateTimePicker FechaDateTimePicker;
-        private System.Windows.Forms.NumericUpDown EstudianteIDNumericUpDown;
         private System.Windows.Forms.NumericUpDown InscripcionIDNumericUpDown;
         private System.Windows.Forms.Label ComentarioLabel;
         private System.Windows.Forms.Label EstudianteIDLabel;
@@ -279,5 +278,6 @@
         private System.Windows.Forms.Label DepositoLabel;
         private System.Windows.Forms.Label MontoLabel;
         private System.Windows.Forms.TextBox ComentarioTextBox;
+        private System.Windows.Forms.NumericUpDown EstudianteIDNumericUpDown;
     }
 }
