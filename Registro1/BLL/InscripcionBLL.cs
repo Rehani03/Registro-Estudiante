@@ -23,6 +23,8 @@ namespace Registro1.BLL
             {
                 if (db.Inscripcion.Add(inscripcion) != null)
                     flag = db.SaveChanges() > 0;
+                db.Estudiante.Find(inscripcion.EstudianteID).Balance = inscripcion.Balance;
+                flag = db.SaveChanges() > 0;
             }
             catch (Exception)
             {
@@ -45,7 +47,9 @@ namespace Registro1.BLL
             try
             {
                 db.Entry(inscripcion).State = EntityState.Modified;
-                flag = (db.SaveChanges() > 0);
+                flag = db.SaveChanges() > 0;
+                db.Estudiante.Find(inscripcion.EstudianteID).Balance = inscripcion.Balance;
+                flag = db.SaveChanges() > 0;
             }
             catch (Exception)
             {
@@ -56,19 +60,19 @@ namespace Registro1.BLL
             {
                 db.Dispose();
             }
+
             return flag;
         }
 
-        //este metodo elimina la incripcion de la base de datos
+        //este metodo elimina la el balance de la incripcion en la base de datos
         public static bool Eliminar(int id)
         {
             bool flag = false;
             Contexto db = new Contexto();
             try
             {
-                var eliminar = db.Inscripcion.Find(id);
-                db.Entry(eliminar).State = EntityState.Deleted;
-
+                db.Inscripcion.Find(id).Balance = 0;
+                db.Estudiante.Find(id).Balance = 0;
                 flag = (db.SaveChanges() > 0);
             }
             catch (Exception)
@@ -104,6 +108,27 @@ namespace Registro1.BLL
             }
 
             return inscripcion;
+        }
+        //Este metodo devuelve una lista de las inscripciones registrada en la base de datos
+        public static List<Inscripcion> GetList(Expression<Func<Inscripcion, bool>> inscripcion)
+        {
+            List<Inscripcion> Lista = new List<Inscripcion>();
+
+            Contexto db = new Contexto();
+            try
+            {
+                Lista = db.Inscripcion.Where(inscripcion).ToList();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                db.Dispose();
+            }
+            return Lista;
         }
     }
 }

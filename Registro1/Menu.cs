@@ -36,5 +36,16 @@ namespace Registro1
             InscripcionForm inscripcionForm = new InscripcionForm();
             inscripcionForm.Show();
         }
+
+        private void ConsultarInscripciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConsultaInscripcionForm cif = new ConsultaInscripcionForm();
+            cif.Show();
+        }
+
+        private void ContactarAlProgramadorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Si desea mejoras, por favor contactar a Rehani Cordero.");
+        }
     }
 }

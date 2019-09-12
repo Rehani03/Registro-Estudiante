@@ -175,6 +175,7 @@ namespace Registro1.UI.Registros
                 MessageBox.Show("No fue posible guardar!!", "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        //este boton busca en la base de datos incripcion
         private void BuscarButton_Click(object sender, EventArgs e)
         {
             int id;
@@ -203,10 +204,10 @@ namespace Registro1.UI.Registros
 
             LimpiarCamposInscripcion();
 
-            /*if (InscripcionBLL.Eliminar(id))
-                MessageBox.Show("Estudiante Eliminado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (InscripcionBLL.Eliminar(id))
+                MessageBox.Show("Balance de Inscripción Eliminado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
-                MessageBox.Show("No se puede eliminar, porque no existe.");*/
+                MessageBox.Show("No se puede eliminar, porque no existe.");
         }
     }
 }
