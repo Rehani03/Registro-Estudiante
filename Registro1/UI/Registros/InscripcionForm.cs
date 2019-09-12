@@ -158,7 +158,7 @@ namespace Registro1.UI.Registros
             {
                 if (!ExisteEnLaBaseDeDatosInscripcion())
                 {
-                    MessageBox.Show("No se puede modificar porque no existe en la base de datos",
+                    MessageBox.Show("No se puede modificar porque no existe en la base de datos Inscripción o Estudiante",
                           "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
