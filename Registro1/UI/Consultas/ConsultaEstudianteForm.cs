@@ -54,8 +54,8 @@ namespace Registro1.UI.Consultas
 
                 }
                 //fecha
-                /*listado = listado.Where(p => p.FechaNacimiento.Date >= DesdeDataTime.Value.Date &&
-                                        p.FechaNacimiento.Date <= HastaDataTime.Value.Date).ToList();*/
+                listado = listado.Where(p => p.FechaNacimiento.Date >= DesdeDataTime.Value.Date &&
+                                        p.FechaNacimiento.Date <= HastaDataTime.Value.Date).ToList();
              }
              else
              {
