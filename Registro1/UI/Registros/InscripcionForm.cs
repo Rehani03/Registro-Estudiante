@@ -136,22 +136,7 @@ namespace Registro1.UI.Registros
             return (inscripcion != null);
         }
 
-        private bool ExisteIDEstudianteEnBaseDeDatosInscripcion()
-        {
-            int id;
-            bool flag = false;
-            Inscripcion inscripcion = new Inscripcion();
-            id = Convert.ToInt32(InscripcionIDNumericUpDown.Value);
-            inscripcion = InscripcionBLL.Buscar(id);
-
-            if (inscripcion != null)
-            {
-               flag = inscripcion.EstudianteID == Convert.ToInt32(EstudianteIDNumericUpDown.Value);
-            }
-            
-            return flag;
-        }
-
+   
         private void NuevoButton_Click(object sender, EventArgs e)
         {
             EstudianteIDNumericUpDown.Enabled = true;
@@ -168,19 +153,19 @@ namespace Registro1.UI.Registros
 
             inscripcion = LlenaClaseInscripcion();
 
-            if(InscripcionIDNumericUpDown.Value == 0 && ExisteEnLaBaseDeDatosEstudiante() == true
-                && ExisteIDEstudianteEnBaseDeDatosInscripcion() == false)
+            if(InscripcionIDNumericUpDown.Value == 0 && ExisteEnLaBaseDeDatosEstudiante() == true)
             {
                 flag = InscripcionBLL.Guardar(inscripcion);
             }     
             else
             {
-                if (!ExisteEnLaBaseDeDatosInscripcion())
+                if(!ExisteEnLaBaseDeDatosInscripcion())
                 {
                     MessageBox.Show("No se puede modificar porque no existe en la base de datos Inscripción o Estudiante",
                           "Fallo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+
                 flag = InscripcionBLL.Modificar(inscripcion);
             }
 
