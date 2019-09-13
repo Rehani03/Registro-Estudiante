@@ -113,6 +113,7 @@ namespace Registro1.BLL
 
             return inscripcion;
         }
+
         //Este metodo devuelve una lista de las inscripciones registrada en la base de datos
         public static List<Inscripcion> GetList(Expression<Func<Inscripcion, bool>> inscripcion)
         {
