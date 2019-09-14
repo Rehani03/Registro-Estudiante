@@ -196,6 +196,26 @@ namespace Registro1.UI.Registros
             return (estudiante != null);
         }
 
+        private bool IdentificarInscripcion(int IDEstudiante)
+        {
+            bool flag = false;
+            Inscripcion inscripcion;
+            var listado = new List<Inscripcion>();
+            listado = InscripcionBLL.GetList(p => true);
+            int cantidad = listado.Count;
+
+            for (int i = 1; i <= cantidad; i++)
+            {
+                inscripcion = InscripcionBLL.Buscar(i);
+                if (inscripcion.EstudianteID == IDEstudiante)
+                {
+                    return flag = true;
+                    
+                }
+            }
+            return flag;
+        }
+
         //Boton guardar del menu de registo de estudiante
         private void GuardarButton_Click(object sender, EventArgs e)
         {
@@ -265,12 +285,18 @@ namespace Registro1.UI.Registros
 
             LimpiarCampos();
 
-            if (EstudianteBLL.Eliminar(id))
-                MessageBox.Show("Estudiante Eliminado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (IdentificarInscripcion(id) == true)
+            {
+                MessageBox.Show("No se puede eliminar este Estudiante porque tiene una inscripción creada.", "Información",
+                   MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             else
-                MessageBox.Show("No se puede eliminar, porque no existe.");
+            {
+                if (EstudianteBLL.Eliminar(id))
+                    MessageBox.Show("Estudiante Eliminado", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else
+                    MessageBox.Show("No se puede eliminar, porque no existe.");
+            }      
         }
-
-
     }
 }
