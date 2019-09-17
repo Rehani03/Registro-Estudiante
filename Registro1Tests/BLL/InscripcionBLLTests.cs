@@ -19,9 +19,9 @@ namespace Registro1.BLL.Tests
             Inscripcion i = new Inscripcion();
             i.InscripcionID = 0;
             i.Fecha = DateTime.Now;
-            i.EstudianteID = 4;
+            i.EstudianteID = 1;
             i.Comentario = "Test Debug";
-            i.Deposito = 1000;
+            i.Deposito = 0;
             i.Monto = 500;
             paso = InscripcionBLL.Guardar(i);
             Assert.AreEqual(paso, true);

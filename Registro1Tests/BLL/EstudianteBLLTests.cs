@@ -27,7 +27,6 @@ namespace Registro1.BLL.Tests
             e.Email = "pablo@gamil.com";
             e.FechaNacimiento = DateTime.Now;
             e.Sexo = 1;
-            e.Balance = 1400;
             paso = EstudianteBLL.Guardar(e);
             Assert.AreEqual(paso, true);
         }
