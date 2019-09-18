@@ -24,8 +24,7 @@ namespace Registro1.BLL
             {
                 if (db.Inscripcion.Add(inscripcion) != null)
                 {
-                    db.Estudiante.Find(inscripcion.EstudianteID).Balance += inscripcion.Monto;
-                    flag = db.SaveChanges() > 0;
+                    flag = db.SaveChanges() > 0 && AfectarBalanceEstudiante(inscripcion);
                 }      
             }
             catch (Exception)
@@ -41,6 +40,50 @@ namespace Registro1.BLL
             return flag;
         }
 
+        private static bool AfectarBalanceEstudiante(Inscripcion inscripcion)
+        {
+            bool paso = false;
+            Contexto db = new Contexto();
+            try
+            {
+                db.Estudiante.Find(inscripcion.EstudianteID).Balance += inscripcion.Balance;
+                paso = db.SaveChanges() > 0;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                db.Dispose();
+            }
+
+            return paso;
+        }
+
+        private static bool AfectarBalanceEstudianteAlModificar(Inscripcion inscripcion)
+        {
+            bool paso = false;
+            Contexto db = new Contexto();
+            try
+            {
+                db.Estudiante.Find(inscripcion.EstudianteID).Balance -= inscripcion.Deposito;
+                paso = db.SaveChanges() > 0;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                db.Dispose();
+            }
+
+            return paso;
+        }
+
         //este metodo modifica la inscripcion en la base de datos
         public static bool Modificar(Inscripcion inscripcion)
         {
@@ -48,10 +91,19 @@ namespace Registro1.BLL
             Contexto db = new Contexto();
             try
             {
-                db.Entry(inscripcion).State = EntityState.Modified;
-                flag = db.SaveChanges() > 0;
-                db.Estudiante.Find(inscripcion.EstudianteID).Balance = inscripcion.Balance;
-                flag = db.SaveChanges() > 0;
+                if(inscripcion.Deposito > 0)
+                {
+                    db.Entry(inscripcion).State = EntityState.Modified;
+                    flag = db.SaveChanges() > 0 && AfectarBalanceEstudianteAlModificar(inscripcion);
+                }
+                else
+                {
+                    db.Entry(inscripcion).State = EntityState.Modified;
+                    flag = db.SaveChanges() > 0;
+                }
+
+                
+                
             }
             catch (Exception)
             {

@@ -47,7 +47,7 @@ namespace Registro1.UI.Registros
             inscripcion.EstudianteID = Convert.ToInt32(EstudianteIDNumericUpDown.Value);
             inscripcion.Comentario = ComentarioTextBox.Text;
             inscripcion.Deposito = Convert.ToDecimal(DepositoTextBox.Text);
-            inscripcion.Monto = monto;
+            inscripcion.Monto = balance;
             inscripcion.Balance = balance;
             return inscripcion;
         }

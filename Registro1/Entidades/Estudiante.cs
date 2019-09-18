@@ -38,5 +38,6 @@ namespace Registro1.Entidades
         public DateTime FechaNacimiento { get ; set ; }
         public int Sexo { get ; set ; }
         public decimal Balance { get; set ; }
+        
     }
 }
