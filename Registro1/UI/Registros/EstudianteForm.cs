@@ -262,6 +262,7 @@ namespace Registro1.UI.Registros
             Estudiante estudiante = new Estudiante();
             id = Convert.ToInt32(IDnumericUpDown.Value);
 
+
             LimpiarCampos();
 
             estudiante = EstudianteBLL.Buscar(id);
